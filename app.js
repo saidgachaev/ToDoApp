@@ -5,14 +5,18 @@ const list = document.querySelector('.items-list')
 
 
 function createTask () {
+
+    if(input.value != '')
+    {
     const div = document.createElement('div')
     div.classList.add('task')
     div.innerHTML = input.value
 
     list.appendChild(div)
     input.value = ''
+    }
+    
 }
-
 
 
 button.addEventListener('click', () => {
