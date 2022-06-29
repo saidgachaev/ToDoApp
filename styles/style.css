@@ -7,7 +7,7 @@
     color: 	#454545;
 }
 
-.task-input{
+.task-input{ 
     margin-left: 320px;
     margin-bottom: 30px;
     height: 30px;
@@ -35,9 +35,31 @@
     padding-left: 40px;
     max-width: 1000px;
     border-color: lightgray;
-    border-radius: 5px;
 }   
+
+
 
 .items-list div:not(:first-child){
     border-top: none;
+}
+
+.task:first-child{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.task:last-child{
+    border-end-start-radius: 5px;
+    border-end-end-radius: 5px;
+}
+
+
+.delete-button{
+    height: 20px;
+    width: 20px;
+    margin-left: 900px;
+    background-image: url(images/delete.svg);
+    background-size: cover;
+    border: none;
+    background-color: white;
 }
