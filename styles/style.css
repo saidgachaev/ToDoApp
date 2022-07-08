@@ -15,6 +15,7 @@
     border: 1px solid lightgray;
     padding-left: 10px;
     border-radius: 5px;
+    outline: none;
 }
 
 .adding-button{
