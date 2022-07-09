@@ -67,14 +67,8 @@
     background-color: white;
 }
 
-/* .input-section {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .container {
-    width: 300px;
-    padding: 20px;
-} */
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
