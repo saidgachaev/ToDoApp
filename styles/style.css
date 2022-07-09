@@ -61,9 +61,20 @@
 .delete-button{
     height: 20px;
     width: 20px;
-    margin-left: 900px;
     background-image: url(images/delete.svg);
     background-size: cover;
     border: none;
     background-color: white;
 }
+
+/* .input-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 300px;
+    padding: 20px;
+} */
