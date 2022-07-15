@@ -10,17 +10,17 @@ function createTask () {
 
     if(input.value != '')
     {
-    const createElement = document.createElement('div')
-    createElement.classList.add('task')
-    createElement.innerHTML = input.value
-    list.appendChild(createElement)
-    createElement.id = Math.random()
+    const newTask = document.createElement('div')
+    newTask.classList.add('task')
+    newTask.innerHTML = input.value
+    list.appendChild(newTask)
+    newTask.id = Math.random()
 
     const deleteButton = document.createElement('button')
     deleteButton.classList.add('delete-button')
-    createElement.appendChild(deleteButton)
+    newTask.appendChild(deleteButton)
     deleteButton.onclick = () => {
-        document.getElementById(createElement.id).remove()
+        document.getElementById(newTask.id).remove()
     }
     
     input.value = ''
