@@ -31,14 +31,14 @@
 .task{
     display: flex;
     justify-content: space-between;
-    padding-right: 20px;
     margin-left: 200px;
     height: 40px;
     border: 1px solid;
     padding-top: 25px;
-    padding-left: 40px;
     max-width: 1000px;
     border-color: lightgray;
+    padding-left: 20px;
+    padding-right: 50px;
 }   
 
 
@@ -71,4 +71,12 @@
     width: 100%;
     max-width: 1500px;
     margin: 0 auto;
+}
+
+.checkbox-style {
+    margin-right: 60px;
+}
+
+.checkbox-checked {
+    text-decoration: line-through;
 }
