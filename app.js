@@ -22,10 +22,24 @@ function createTask () {
     checkbox.setAttribute('type', 'checkbox');
     checkbox.classList.add('checkbox-style');
 
+    checkbox.addEventListener('click', () => {
+
+        if(textContainer.classList.contains('checkbox-checked')) {
+            textContainer.classList.remove('checkbox-checked');
+        } else {
+            textContainer.classList.add('checkbox-checked');
+        }
+
+    })
+
     let elementContainer = document.createElement('div');
         elementContainer.appendChild(checkbox);
-        elementContainer.innerHTML += input.value;
         newTask.appendChild(elementContainer);
+        elementContainer.classList.add('element-container');
+
+    const textContainer = document.createElement('div');
+    textContainer.innerHTML += input.value;
+    elementContainer.appendChild(textContainer);
         
 
     deleteButton = document.createElement('button');

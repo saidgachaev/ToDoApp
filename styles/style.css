@@ -80,3 +80,7 @@
 .checkbox-checked {
     text-decoration: line-through;
 }
+
+.element-container {
+    display: flex;
+}
