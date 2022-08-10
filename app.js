@@ -1,68 +1,70 @@
+const list = document.querySelector(".items-list");
+const button = document.querySelector(".adding-button");
+const input = document.querySelector(".task-input");
 
-// Получаю элементы из HTML
+const Task = (id, text, checked, onDelete, onCheckboxChange) => {
+    const task = document.createElement('div')
+    const textContainer = document.createElement('div');
+    const elementContainer = document.createElement('div');
+    const deleteButton = document.createElement('button')
+    const checkbox = document.createElement('input');
 
-const button = document.querySelector('.adding-button'),
-      input = document.querySelector('.task-input'),
-      list = document.querySelector('.items-list');
-
-let newTask = '',
-        deleteButton = '';
-
-function createTask () {
-
-    if(input.value != '')
-    {
-    
-    newTask = document.createElement('div');
-    list.appendChild(newTask);
-    newTask.classList.add('task');
-    newTask.id = Math.random();
-
-    const checkbox = document.createElement('INPUT');
     checkbox.setAttribute('type', 'checkbox');
     checkbox.classList.add('checkbox-style');
+    checkbox.onclick = onCheckboxChange
+    checkbox.checked = checked
 
-    checkbox.addEventListener('click', () => {
+    textContainer.innerHTML += text
+    if (checked) {
+        textContainer.classList.add('checkbox-checked')
+    }
 
-        if(textContainer.classList.contains('checkbox-checked')) {
-            textContainer.classList.remove('checkbox-checked');
-        } else {
-            textContainer.classList.add('checkbox-checked');
+    elementContainer.appendChild(checkbox)
+    elementContainer.appendChild(textContainer)
+    elementContainer.classList.add('element-container')
+
+    deleteButton.classList.add('delete-button')
+    deleteButton.onclick = onDelete
+
+    task.classList.add('task')
+    task.id = id
+    task.appendChild(elementContainer)
+    task.appendChild(deleteButton)
+
+    return task
+}
+
+let tasks = []
+
+const addTask = (id, text) => {
+    tasks.push({ id, text, checked: false })
+    render()
+}
+
+const deleteTask = (id) => {
+    tasks = tasks.filter(task => task.id !== id)
+    render()
+}
+
+const toggleTask = (id) => {
+    tasks.forEach(task => {
+        if (task.id === id) {
+            task.checked = !task.checked
         }
-
     })
-
-    let elementContainer = document.createElement('div');
-        elementContainer.appendChild(checkbox);
-        newTask.appendChild(elementContainer);
-        elementContainer.classList.add('element-container');
-
-    const textContainer = document.createElement('div');
-    textContainer.innerHTML += input.value;
-    elementContainer.appendChild(textContainer);
-        
-
-    deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-button');
-    newTask.appendChild(deleteButton);
-
-    deleteButton.onclick = () => {
-        document.querySelector('.task').remove();
-    }
-    
-    input.value = '';
-    }
+    render()
 }
 
 
+const render = () => {
+    list.innerHTML = ''
+    tasks.forEach(task => list.appendChild(Task(task.id, task.text, task.checked, () => deleteTask(task.id), () => toggleTask(task.id))))
+};
+
+
 button.addEventListener('click', () => {
-    createTask();
-}) 
+    if (input.value) addTask(Math.random(), input.value) 
+    input.value = ''
+})
 
-
-input.addEventListener('keydown', function(e) {
-    if (e.keyCode === 13) 
-      {
-      createTask();
-      }
-    })
+render()
