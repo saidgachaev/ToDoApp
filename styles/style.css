@@ -5,7 +5,7 @@
     box-sizing: border-box;
     }
 
-    input[type=checkbox] {
+    input [type=checkbox] {
         height: fit-content;
         }
 
