@@ -1,9 +1,8 @@
-
-/* *, *:before, *:after {
+ *, *:before, *:after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    } */
+    } 
 
 .todolist-header{
     margin-left: 200px;
@@ -43,13 +42,14 @@ input[type=checkbox] {
     display: flex;
     justify-content: space-between;
     margin-left: 200px;
-    height: 40px;
+    height: 60px;
     border: 1px solid;
     padding-top: 25px;
     max-width: 1000px;
     border-color: lightgray;
     padding-left: 20px;
     padding-right: 50px;
+    line-height: 1rem;
 }   
 
 
