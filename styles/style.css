@@ -13,10 +13,11 @@
 }
 
 .task-input{ 
+    margin-top: 20px;
     margin-left: 320px;
     margin-bottom: 30px;
     height: 35px;
-    width: 800px;
+    width: 60%;
     border: 1px solid lightgray;
     padding-left: 10px;
     border-radius: 5px;

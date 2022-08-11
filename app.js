@@ -62,7 +62,8 @@ const render = () => {
 };
 
 
-button.addEventListener('click', () => {
+button.addEventListener('click', (e) => {
+    e.preventDefault();
     if (input.value) addTask(Math.random(), input.value);
     input.value = '';
 })
