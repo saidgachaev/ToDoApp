@@ -13,9 +13,9 @@
 }
 
 .task-input{ 
-    margin-top: 20px;
+    /* margin-top: 20px;
     margin-left: 320px;
-    margin-bottom: 30px;
+    margin-bottom: 30px; */
     height: 35px;
     width: 60%;
     border: 1px solid lightgray;
@@ -95,4 +95,13 @@ input[type=checkbox] {
 
 .element-container {
     display: flex;
+}
+
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
 }
