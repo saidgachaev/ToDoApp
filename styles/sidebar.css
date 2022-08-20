@@ -1,5 +1,12 @@
 .sidebar {
-    background-color: gray;
+    background-color: lightgray;
     width: 200px;
     height: 100vh;
+}
+
+.sidebar-button {
+    width: 200px;
+    height: 30px;
+    background-color: #e2dddd;
+    border: none;
 }

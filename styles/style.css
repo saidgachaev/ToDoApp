@@ -82,8 +82,7 @@ input[type=checkbox] {
 
 .container {
     position: absolute;
-    margin-left: 200px;
-    left: 0;
+    left: 100px;
     top: 0;
     width: 100%;
     max-width: 1500px;
