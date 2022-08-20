@@ -1,12 +1,29 @@
 .sidebar {
-    background-color: lightgray;
-    width: 200px;
+    background-color: #c0c0c0;
+    width: 300px;
     height: 100vh;
 }
 
+.todoapp-header {
+   padding-top: 10px;
+   padding-left: 8px;
+   font-weight: normal;
+   margin-bottom: 20px;
+}
+
+.sidebar-list-element {
+    background-color: rgb(213, 212, 212);
+    margin-bottom: 10px;
+    height: 30px;
+    width: 280px;
+    border-radius: 5px;
+}
+
 .sidebar-button {
-    width: 200px;
+    position: absolute;
+    width: 300px;
     height: 30px;
     background-color: #e2dddd;
     border: none;
+    bottom: 0;
 }
