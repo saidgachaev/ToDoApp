@@ -7,28 +7,20 @@
 .todolist-header{
     font-family: 'Roboto', sans-serif;
     color: lightgray;
-    margin-left: 200px;
-    margin-top: 100px;
-    margin-bottom: 30px;
     font-weight: 10;
     font-size: 60px;
     color: 	#454545;
 }
 
 .task-input{ 
-    
     height: 35px;
-    width: 60%;
+    width: 100%;
     border: 1px solid lightgray;
     padding-left: 10px;
     border-radius: 5px;
     outline: none;
 }
 
-
-input[type=checkbox] {
-    height: fit-content;
-    }
 
 .adding-button{
     color: white;
@@ -43,7 +35,6 @@ input[type=checkbox] {
 .task{
     display: flex;
     justify-content: space-between;
-    margin-left: 200px;
     height: 60px;
     border: 1px solid;
     padding-top: 25px;
@@ -81,12 +72,10 @@ input[type=checkbox] {
 }
 
 .container {
-    position: absolute;
-    left: 170px;
-    top: 0;
     width: 100%;
     max-width: 1500px;
     margin: 0 auto;
+    padding: 100px 200px 30px;
 }
 
 .checkbox-style {
@@ -110,6 +99,6 @@ input[type=checkbox] {
     margin-bottom: 30px;
 }
 
-body {
-    position: relative;
+main {
+    display: flex;
 }
