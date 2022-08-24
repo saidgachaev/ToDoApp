@@ -9,17 +9,21 @@
 
 .todoapp-header {
    padding-top: 10px;
-   padding-left: 8px;
    font-weight: normal;
-   margin-bottom: 20px;
+   margin-bottom: 40px;
+   margin-left: 10px;
 }
 
 .sidebar-list-element {
     background-color: rgb(213, 212, 212);
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 30px;
     width: 280px;
     border-radius: 5px;
+    padding-left: 10px;
 }
 
 .sidebar-button {
@@ -29,4 +33,32 @@
     background-color: #e2dddd;
     border: none;
     bottom: 0;
+}
+
+.sidebar-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-list-container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.delete-list-button {
+    height: 20px;
+    width: 20px;
+    background-size: cover;
+    border: none;
+    background-image: url(/images/delete.svg);
+}
+
+.edit-list-button {
+    height: 20px;
+    width: 20px;
+    background-size: cover;
+    border: none;
+    background-image: url(/images/edit-list-button.svg);
 }
