@@ -62,6 +62,6 @@
     width: 20px;
     background-size: cover;
     border: none;
-    background-image: url(/images/edit.svg);
+    background-image: url(/images/pen.svg);
     background-color: inherit;
 }
