@@ -16,14 +16,15 @@
 
 .sidebar-list-element {
     background-color: rgb(213, 212, 212);
-    margin-bottom: 10px;
+    margin-bottom: 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 30px;
-    width: 280px;
+    height: 35px;
+    width: 270px;
     border-radius: 5px;
     padding-left: 10px;
+    padding-right: 10px;
 }
 
 .sidebar-button {
@@ -53,6 +54,7 @@
     background-size: cover;
     border: none;
     background-image: url(/images/delete.svg);
+    background-color: inherit;
 }
 
 .edit-list-button {
@@ -60,5 +62,6 @@
     width: 20px;
     background-size: cover;
     border: none;
-    background-image: url(/images/edit-list-button.svg);
+    background-image: url(/images/edit.svg);
+    background-color: inherit;
 }
