@@ -25,6 +25,19 @@
     border-radius: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    cursor: pointer;
+}
+
+.sidebar-list-element-active {
+    border-left: 5px solid black;
+}
+
+.sidebar-list-element:hover {
+    background-color: rgb(226, 213, 222);
+}
+
+.sidebar-list-element-active {
+
 }
 
 .sidebar-button {
@@ -55,6 +68,7 @@
     border: none;
     background-image: url(/images/delete.svg);
     background-color: inherit;
+    cursor: pointer;
 }
 
 .edit-list-button {
@@ -64,4 +78,15 @@
     border: none;
     background-image: url(/images/pen.svg);
     background-color: inherit;
+    cursor: pointer;
+}
+
+.sidebar-list-element-text {
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis;
+}
+
+.sidebar-list-element-button {
+    display: flex;
 }
