@@ -1,0 +1,93 @@
+.sidebar {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #c0c0c0;
+    width: 300px;
+    height: 100vh;
+}
+
+.todoapp-header {
+   padding-top: 10px;
+   font-weight: normal;
+   margin-bottom: 40px;
+   margin-left: 10px;
+}
+
+.sidebar-list-element {
+    background-color: rgb(213, 212, 212);
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+    width: 270px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.sidebar-list-element-active {
+    border-left: 5px solid black;
+    background-color: rgb(226, 213, 222);
+}
+
+.sidebar-list-element:hover {
+    background-color: rgb(226, 213, 222);
+}
+
+.sidebar-list-element-active {
+
+}
+
+.sidebar-button {
+    cursor: pointer;
+    width: 300px;
+    height: 30px;
+    background-color: #e2dddd;
+    border: none;
+    bottom: 0;
+}
+
+.sidebar-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-list-container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.delete-list-button {
+    height: 20px;
+    width: 20px;
+    background-size: cover;
+    border: none;
+    background-image: url(/images/delete.svg);
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.edit-list-button {
+    height: 20px;
+    width: 20px;
+    background-size: cover;
+    border: none;
+    background-image: url(/images/pen.svg);
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.sidebar-list-element-text {
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis;
+}
+
+.sidebar-list-element-button {
+    display: flex;
+}

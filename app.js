@@ -1,6 +1,10 @@
+// Получаем элементы из HTML
+
 const list = document.querySelector(".items-list");
 const button = document.querySelector(".adding-button");
 const input = document.querySelector(".task-input");
+
+
 
 const Task = (id, text, checked, onDelete, onCheckboxChange) => {
     const task = document.createElement('div')
