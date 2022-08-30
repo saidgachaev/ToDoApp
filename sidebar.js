@@ -1,7 +1,7 @@
-let sidebarLists = document.querySelector('.sidebar-list');
+let sidebarList = document.querySelector('.sidebar-list');
 const sidebarButton = document.querySelector('.sidebar-button');
 
-sidebarButton.addEventListener('click', () => {
+const createList = (id, onDelete) => {
     const listElement = document.createElement('div');
     const listElementText = document.createElement('div');
     const listButtonContainer = document.createElement('div');
@@ -18,10 +18,53 @@ sidebarButton.addEventListener('click', () => {
     listButtonContainer.appendChild(listDeleteButton);
     listElement.appendChild(listElementText);
     listElement.appendChild(listButtonContainer);
-    sidebarLists.appendChild(listElement);
+    sidebarList.appendChild(listElement);
 
     listElementText.textContent += 'New list';
+
+    listDeleteButton.onclick = onDelete;
+
+    listElement.id = id;
+
+    return listElement;
+
+}
+
+let elements = [];
+
+
+const addListElement = (id) => {
+    elements.push({id});
+    listElementRender();
+}
+
+const deleteListElement = (id) => {
+    elements = elements.filter(element => element.id !== id);
+    listElementRender();
+}
+
+
+const listElementRender = () => {
+    sidebarList.innerHTML = '';
+    elements.forEach(element => sidebarList.appendChild(createList(element.id, () => deleteListElement(element.id))));
+};
+
+
+sidebarButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    addListElement(Math.random());
+
+     listElementRender();
+    
 })
+
+
+listElementRender();
+
+
+
+
+// Удалю после проверки, если все будет ок.
 
 // const createList = () => {
 //     const listElement = document.createElement('div');
@@ -40,7 +83,7 @@ sidebarButton.addEventListener('click', () => {
 //     listButtonContainer.appendChild(listDeleteButton);
 //     listElement.appendChild(listElementText);
 //     listElement.appendChild(listButtonContainer);
-//     sidebarLists.appendChild(listElement);
+//     sidebarList.appendChild(listElement);
 
 //     listElementText.textContent += 'New list';
 
