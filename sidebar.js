@@ -1,7 +1,7 @@
 let sidebarList = document.querySelector('.sidebar-list');
 const sidebarButton = document.querySelector('.sidebar-button');
 
-const createList = (id, onDelete) => {
+const List = (id, onDelete) => {
     const listElement = document.createElement('div');
     const listElementText = document.createElement('div');
     const listButtonContainer = document.createElement('div');
@@ -33,33 +33,33 @@ const createList = (id, onDelete) => {
 let elements = [];
 
 
-const addListElement = (id) => {
+const addList = (id) => {
     elements.push({id});
-    listElementRender();
+    listsRender();
 }
 
-const deleteListElement = (id) => {
+const deleteList = (id) => {
     elements = elements.filter(element => element.id !== id);
-    listElementRender();
+    listsRender();
 }
 
 
-const listElementRender = () => {
+const listsRender = () => {
     sidebarList.innerHTML = '';
-    elements.forEach(element => sidebarList.appendChild(createList(element.id, () => deleteListElement(element.id))));
+    elements.forEach(element => sidebarList.appendChild(List(element.id, () => deleteList(element.id))));
 };
 
 
 sidebarButton.addEventListener('click', (e) => {
     e.preventDefault();
-    addListElement(Math.random());
+    addList(Math.random());
 
-     listElementRender();
+     listsRender();
     
 })
 
 
-listElementRender();
+listsRender();
 
 
 
