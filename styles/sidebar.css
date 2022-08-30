@@ -1,10 +1,12 @@
+
+
 .sidebar {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     background-color: #c0c0c0;
     width: 300px;
-    height: 100vh;
+    min-height: 100%;
 }
 
 .todoapp-header {
@@ -48,6 +50,7 @@
     background-color: #e2dddd;
     border: none;
     bottom: 0;
+    margin-top: 10px;
 }
 
 .sidebar-list {

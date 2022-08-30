@@ -42,12 +42,12 @@ let tasks = [];
 
 const addTask = (id, text) => {
     tasks.push({ id, text, checked: false });
-    render();
+    tasksRender();
 }
 
 const deleteTask = (id) => {
     tasks = tasks.filter(task => task.id !== id);
-    render();
+    tasksRender();
 }
 
 const toggleTask = (id) => {
@@ -56,11 +56,11 @@ const toggleTask = (id) => {
             task.checked = !task.checked;
         }
     })
-    render();
+    tasksRender();
 }
 
 
-const render = () => {
+const tasksRender = () => {
     list.innerHTML = '';
     tasks.forEach(task => list.appendChild(Task(task.id, task.text, task.checked, () => deleteTask(task.id), () => toggleTask(task.id))));
 };
@@ -80,4 +80,4 @@ input.addEventListener('keydown', function(e) {
       }
     });
 
-render();
+tasksRender();
