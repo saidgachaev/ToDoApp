@@ -26,6 +26,23 @@ const List = (id, onDelete) => {
 
     listElement.id = id;
 
+    listEditButton.onclick = () => {
+        const buffer = listElementText.innerText;
+        const editInput = document.createElement('input');
+        listElementText.innerText = '';
+        editInput.setAttribute('type', 'text');
+        listElementText.appendChild(editInput);
+        editInput.value = buffer;
+        
+
+        editInput.addEventListener('keydown', function(e) {
+            if (e.keyCode === 13) {
+                listElementText.innerText = editInput.value; 
+            }
+        })
+
+    }
+
     return listElement;
 
 }
@@ -59,7 +76,12 @@ sidebarButton.addEventListener('click', (e) => {
 })
 
 
+
+
 listsRender();
+
+
+
 
 
 
