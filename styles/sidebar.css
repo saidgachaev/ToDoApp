@@ -94,3 +94,7 @@
 .sidebar-list-element-button {
     display: flex;
 }
+
+.sidebar-list-button-container {
+    display: flex;
+}
