@@ -24,6 +24,7 @@
 
 
 .adding-button{
+    cursor: pointer;
     color: white;
     background-color: rgb(52, 146, 205);
     height: 40px;
@@ -64,6 +65,7 @@
 
 
 .delete-button{
+    cursor: pointer;
     height: 20px;
     width: 20px;
     background-image: url(/images/delete.svg);
