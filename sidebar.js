@@ -1,7 +1,7 @@
 let sidebarList = document.querySelector('.sidebar-list');
 const sidebarButton = document.querySelector('.sidebar-button');
 
-const List = (id, onDelete) => {
+const List = (id, name, onDelete, onChange) => {
     const listElement = document.createElement('div');
     const listElementText = document.createElement('div');
     const listButtonContainer = document.createElement('div');
@@ -20,33 +20,67 @@ const List = (id, onDelete) => {
     listElement.appendChild(listButtonContainer);
     sidebarList.appendChild(listElement);
 
-    listElementText.textContent += 'New list';
+    listElementText.textContent += name;
 
     listDeleteButton.onclick = onDelete;
 
     listElement.id = id;
 
+
+    listEditButton.onclick = () => {
+
+        const buffer = listElementText.innerText;
+        const editInput = document.createElement('input');
+
+        listElementText.innerText = '';
+        listElementText.appendChild(editInput);
+
+        editInput.setAttribute('type', 'text');
+        editInput.value = buffer;
+        editInput.focus();
+
+
+        editInput.addEventListener('keydown', function(e) {
+            if (e.keyCode === 13) {
+                onChange(editInput.value);
+            }
+        })
+
+        editInput.addEventListener('blur', () => {
+            onChange(editInput.value);
+        })
+
+    }
+
     return listElement;
 
 }
 
-let elements = [];
+let lists = [];
 
 
-const addList = (id) => {
-    elements.push({id});
+const addList = (id, name = 'New list') => {
+    lists.push({id, name});
     listsRender();
 }
 
 const deleteList = (id) => {
-    elements = elements.filter(element => element.id !== id);
+    lists = lists.filter(list => list.id !== id);
     listsRender();
 }
 
+const changeList = (id, name = 'New list') => {
+    lists.forEach(list => {
+        if (list.id === id) {
+            list.name = name;
+        }
+    })
+    listsRender();
+}
 
 const listsRender = () => {
     sidebarList.innerHTML = '';
-    elements.forEach(element => sidebarList.appendChild(List(element.id, () => deleteList(element.id))));
+    lists.forEach(list => sidebarList.appendChild(List(list.id, list.name, () => deleteList(list.id), (name) => changeList(list.id, name))));
 };
 
 
@@ -58,37 +92,4 @@ sidebarButton.addEventListener('click', (e) => {
     
 })
 
-
 listsRender();
-
-
-
-
-// Удалю после проверки, если все будет ок.
-
-// const createList = () => {
-//     const listElement = document.createElement('div');
-//     const listElementText = document.createElement('div');
-//     const listButtonContainer = document.createElement('div');
-//     const listEditButton = document.createElement('button');
-//     const listDeleteButton = document.createElement('button');
-
-//     listElement.classList.add('sidebar-list-element');
-//     listElementText.classList.add('sidebar-list-element-text');
-//     listButtonContainer.classList.add('sidebar-list-button-container');
-//     listEditButton.classList.add('edit-list-button');
-//     listDeleteButton.classList.add('delete-list-button');
-
-//     listButtonContainer.appendChild(listEditButton);
-//     listButtonContainer.appendChild(listDeleteButton);
-//     listElement.appendChild(listElementText);
-//     listElement.appendChild(listButtonContainer);
-//     sidebarList.appendChild(listElement);
-
-//     listElementText.textContent += 'New list';
-
-// }
-
-// sidebarButton.addEventListener('click', () => {
-//     createList();
-// })
