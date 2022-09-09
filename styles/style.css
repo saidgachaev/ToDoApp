@@ -47,6 +47,10 @@
     line-height: 1rem;
 }   
 
+.items-list {
+    height: 540px;
+    overflow: scroll;
+}
 
 
 .items-list div:not(:first-child){
