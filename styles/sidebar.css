@@ -6,7 +6,6 @@
     flex-direction: column;
     background-color: #c0c0c0;
     width: 300px;
-    min-height: 100%;
 }
 
 .todoapp-header {
@@ -22,7 +21,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 35px;
+    min-height: 35px;
     width: 270px;
     border-radius: 5px;
     padding-left: 10px;
@@ -54,9 +53,11 @@
 }
 
 .sidebar-list {
+    height: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: auto;
 }
 
 .sidebar-list-container {
