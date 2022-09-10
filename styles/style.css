@@ -49,7 +49,7 @@
 
 .items-list {
     height: 540px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 
