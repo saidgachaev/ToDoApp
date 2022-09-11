@@ -4,6 +4,21 @@
     box-sizing: border-box;
     } 
 
+    html {
+        height: 100%;
+
+    }
+    
+    body {
+        height: 100%;
+    }
+    
+    main {
+        display: flex;
+        min-height: 100%;
+    }
+    
+
 .todolist-header{
     font-family: 'Roboto', sans-serif;
     color: lightgray;
@@ -35,6 +50,7 @@
 }
 
 .task{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,7 +64,7 @@
 }   
 
 .items-list {
-    height: 540px;
+    height: 500px;
     overflow: auto;
 }
 
@@ -95,8 +111,8 @@
 
 .element-container {
     display: flex;
+    width: 100%;
 }
-
 
 .wrapper {
     display: flex;
@@ -106,15 +122,8 @@
     margin-bottom: 30px;
 }
 
-html {
-    height: 100%;
-}
-
-body {
-    height: 100%;
-}
-
-main {
-    display: flex;
-    min-height: 100%;
+.task-text {
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis;
 }
