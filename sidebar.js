@@ -32,10 +32,13 @@ const List = (id, name, selected, onDelete, onChange, onSelect) => {
     listElement.id = id;
 
 
-    listElement.onclick = (event) => {
-        event.preventDefault();
-        onSelect();
-    }
+    listElement.addEventListener('dblclick', onSelect);
+    
+    
+    // onclick = (event) => {
+    //     event.preventDefault();
+    //     onSelect();
+    // }
 
     listEditButton.onclick = () => {
 
