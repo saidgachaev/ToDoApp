@@ -32,7 +32,7 @@ const List = (id, name, selected, onDelete, onChange, onSelect) => {
     listElement.id = id;
 
 
-    listElement.addEventListener('dblclick', onSelect);
+    listElement.addEventListener('click', onSelect);
     
     
     // onclick = (event) => {
@@ -65,12 +65,7 @@ const List = (id, name, selected, onDelete, onChange, onSelect) => {
 
     }
 
-
-
-
     return listElement;
-
-
 
 }
 
