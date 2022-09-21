@@ -22,6 +22,7 @@ const Task = (id, text, checked, onDelete, onCheckboxChange) => {
     if (checked) {
         textContainer.classList.add('checkbox-checked');
     }
+    textContainer.classList.add('task-text');
 
     elementContainer.appendChild(checkbox);
     elementContainer.appendChild(textContainer);

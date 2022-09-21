@@ -1,7 +1,8 @@
+
 let sidebarList = document.querySelector('.sidebar-list');
 const sidebarButton = document.querySelector('.sidebar-button');
 
-const List = (id, name, onDelete, onChange) => {
+const List = (id, name, selected, onDelete, onChange, onSelect) => {
     const listElement = document.createElement('div');
     const listElementText = document.createElement('div');
     const listButtonContainer = document.createElement('div');
@@ -14,11 +15,16 @@ const List = (id, name, onDelete, onChange) => {
     listEditButton.classList.add('edit-list-button');
     listDeleteButton.classList.add('delete-list-button');
 
+    if (selected) {
+        listElement.classList.add('sidebar-list-element-active');
+    }
+
     listButtonContainer.appendChild(listEditButton);
     listButtonContainer.appendChild(listDeleteButton);
     listElement.appendChild(listElementText);
     listElement.appendChild(listButtonContainer);
     sidebarList.appendChild(listElement);
+
 
     listElementText.textContent += name;
 
@@ -26,9 +32,11 @@ const List = (id, name, onDelete, onChange) => {
 
     listElement.id = id;
 
+    listElement.addEventListener('click', onSelect);
+    
+    listEditButton.onclick = (e) => {
 
-    listEditButton.onclick = () => {
-
+        e.stopPropagation()
         const buffer = listElementText.innerText;
         const editInput = document.createElement('input');
 
@@ -38,6 +46,10 @@ const List = (id, name, onDelete, onChange) => {
         editInput.setAttribute('type', 'text');
         editInput.value = buffer;
         editInput.focus();
+
+        editInput.onclick = (e) => {
+            e.stopPropagation();
+        }
 
 
         editInput.addEventListener('keydown', function(e) {
@@ -57,6 +69,7 @@ const List = (id, name, onDelete, onChange) => {
 }
 
 let lists = [];
+let selectedList = [];
 
 
 const addList = (id, name = 'New list') => {
@@ -78,11 +91,34 @@ const changeList = (id, name = 'New list') => {
     listsRender();
 }
 
+const selectList = (id) => {
+    lists.forEach(list => {
+        if (list.id === id) {
+
+            selectedList = list;
+        }
+    })
+    listsRender();
+}
+
 const listsRender = () => {
     sidebarList.innerHTML = '';
-    lists.forEach(list => sidebarList.appendChild(List(list.id, list.name, () => deleteList(list.id), (name) => changeList(list.id, name))));
-};
+    lists.forEach(list => {
+        let isListSelected = selectedList.id === list.id;
+        sidebarList.appendChild(List(list.id, list.name, 
+            isListSelected,
 
+            () => deleteList(list.id), 
+        
+            (name) => changeList(list.id, name),
+
+            () => selectList(list.id)
+
+            ));
+    }
+        
+        );
+};
 
 sidebarButton.addEventListener('click', (e) => {
     e.preventDefault();

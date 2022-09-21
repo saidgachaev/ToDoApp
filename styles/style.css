@@ -4,6 +4,20 @@
     box-sizing: border-box;
     } 
 
+    html {
+        height: 100%;
+    }
+    
+    body {
+        height: 100%;
+    }
+    
+    main {
+        display: flex;
+        min-height: 100%;
+    }
+    
+
 .todolist-header{
     font-family: 'Roboto', sans-serif;
     color: lightgray;
@@ -35,18 +49,23 @@
 }
 
 .task{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 60px;
     border: 1px solid;
-    max-width: 1000px;
     border-color: lightgray;
     padding-left: 10px;
     padding-right: 20px;
     line-height: 1rem;
 }   
 
+.items-list {
+    width: 100%;
+    overflow: auto;
+    height: 65vh;
+}
 
 
 .items-list div:not(:first-child){
@@ -67,7 +86,7 @@
 .delete-button{
     cursor: pointer;
     height: 20px;
-    width: 20px;
+    min-width: 20px;
     background-image: url(/images/delete.svg);
     background-size: cover;
     border: none;
@@ -75,8 +94,7 @@
 }
 
 .container {
-    width: 100%;
-    max-width: 1500px;
+    width: 80%;
     margin: 0 auto;
     padding: 100px 200px 30px;
 }
@@ -91,8 +109,8 @@
 
 .element-container {
     display: flex;
+    width: 90%;
 }
-
 
 .wrapper {
     display: flex;
@@ -102,15 +120,8 @@
     margin-bottom: 30px;
 }
 
-html {
-    height: 100%;
-}
-
-body {
-    height: 100%;
-}
-
-main {
-    display: flex;
-    min-height: 100%;
+.task-text {
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis;
 }
