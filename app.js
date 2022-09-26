@@ -4,8 +4,6 @@ const list = document.querySelector(".items-list");
 const button = document.querySelector(".adding-button");
 const input = document.querySelector(".task-input");
 
-
-
 const Task = (id, text, checked, onDelete, onCheckboxChange) => {
     const task = document.createElement('div')
     const textContainer = document.createElement('div');
@@ -41,10 +39,10 @@ const Task = (id, text, checked, onDelete, onCheckboxChange) => {
 
 let tasks = [];
 
-const addTask = (id, text) => {
-    tasks.push({ id, text, checked: false });
+  const addTask = (id, text) => {
+    tasks.push({ id, text, checked: false, taskList: selectedList.id });
     tasksRender();
-}
+  }
 
 const deleteTask = (id) => {
     tasks = tasks.filter(task => task.id !== id);
@@ -63,8 +61,22 @@ const toggleTask = (id) => {
 
 const tasksRender = () => {
     list.innerHTML = '';
-    tasks.forEach(task => list.appendChild(Task(task.id, task.text, task.checked, () => deleteTask(task.id), () => toggleTask(task.id))));
-};
+    const taskFilter = tasks.filter((item) => {
+      return item.taskList === selectedList.id;
+    })
+    taskFilter.forEach((task) => {
+        list.appendChild(Task(
+            task.id,
+            task.text,
+            task.checked,
+            () => deleteTask(task.id),
+            () => toggleTask(task.id)))
+    })
+  };
+  
+  list.addEventListener('listSelect', function () {
+    tasksRender();
+  })
 
 
 button.addEventListener('click', (e) => {

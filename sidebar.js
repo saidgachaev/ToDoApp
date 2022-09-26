@@ -69,13 +69,17 @@ const List = (id, name, selected, onDelete, onChange, onSelect) => {
 }
 
 let lists = [];
+
 let selectedList = [];
 
+const event = new Event('listSelect');
 
 const addList = (id, name = 'New list') => {
     lists.push({id, name});
     listsRender();
-}
+    selectList();
+  }
+
 
 const deleteList = (id) => {
     lists = lists.filter(list => list.id !== id);
@@ -93,13 +97,13 @@ const changeList = (id, name = 'New list') => {
 
 const selectList = (id) => {
     lists.forEach(list => {
-        if (list.id === id) {
-
-            selectedList = list;
-        }
-    })
+      if (list.id === id) {
+        selectedList = list;
+      }
+    });
+    list.dispatchEvent(event);
     listsRender();
-}
+  }
 
 const listsRender = () => {
     sidebarList.innerHTML = '';
