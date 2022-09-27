@@ -1,5 +1,5 @@
 
-let sidebarList = document.querySelector('.sidebar-list');
+const sidebarList = document.querySelector('.sidebar-list');
 const sidebarButton = document.querySelector('.sidebar-button');
 
 const List = (id, name, selected, onDelete, onChange, onSelect) => {
@@ -21,18 +21,16 @@ const List = (id, name, selected, onDelete, onChange, onSelect) => {
 
     listButtonContainer.appendChild(listEditButton);
     listButtonContainer.appendChild(listDeleteButton);
+    sidebarList.appendChild(listElement);
     listElement.appendChild(listElementText);
     listElement.appendChild(listButtonContainer);
-    sidebarList.appendChild(listElement);
-
 
     listElementText.textContent += name;
-
-    listDeleteButton.onclick = onDelete;
 
     listElement.id = id;
 
     listElement.addEventListener('click', onSelect);
+    listDeleteButton.addEventListener('click', onDelete);
     
     listEditButton.onclick = (e) => {
 
