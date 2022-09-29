@@ -2,6 +2,7 @@
 const sidebarList = document.querySelector('.sidebar-list');
 const sidebarButton = document.querySelector('.sidebar-button');
 
+
 const List = (id, name, selected, onDelete, onChange, onSelect) => {
     const listElement = document.createElement('div');
     const listElementText = document.createElement('div');
@@ -66,11 +67,11 @@ const List = (id, name, selected, onDelete, onChange, onSelect) => {
 
 }
 
+
+
 let lists = [];
 
 let selectedList = [];
-
-const event = new Event('listSelect');
 
 const addList = (id, name = 'New list') => {
     lists.push({id, name});
@@ -99,7 +100,7 @@ const selectList = (id) => {
         selectedList = list;
       }
     });
-    list.dispatchEvent(event);
+    tasksRender();
     listsRender();
   }
 

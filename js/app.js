@@ -3,6 +3,7 @@ const list = document.querySelector(".items-list");
 const button = document.querySelector(".adding-button");
 const input = document.querySelector(".task-input");
 
+
 const Task = (id, text, checked, onDelete, onCheckboxChange) => {
     const task = document.createElement('div');
     const textContainer = document.createElement('div');
@@ -36,6 +37,7 @@ const Task = (id, text, checked, onDelete, onCheckboxChange) => {
 
     return task;
 }
+
 
 let tasks = [];
 
@@ -73,11 +75,6 @@ const tasksRender = () => {
             () => toggleTask(task.id)))
     })
   };
-  
-  list.addEventListener('listSelect', () => {
-    tasksRender();
-  })
-
 
 button.addEventListener('click', (e) => {
     e.preventDefault();
