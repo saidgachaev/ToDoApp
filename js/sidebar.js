@@ -1,6 +1,7 @@
 
-let sidebarList = document.querySelector('.sidebar-list');
+const sidebarList = document.querySelector('.sidebar-list');
 const sidebarButton = document.querySelector('.sidebar-button');
+
 
 const List = (id, name, selected, onDelete, onChange, onSelect) => {
     const listElement = document.createElement('div');
@@ -21,18 +22,16 @@ const List = (id, name, selected, onDelete, onChange, onSelect) => {
 
     listButtonContainer.appendChild(listEditButton);
     listButtonContainer.appendChild(listDeleteButton);
+    sidebarList.appendChild(listElement);
     listElement.appendChild(listElementText);
     listElement.appendChild(listButtonContainer);
-    sidebarList.appendChild(listElement);
-
 
     listElementText.textContent += name;
-
-    listDeleteButton.onclick = onDelete;
 
     listElement.id = id;
 
     listElement.addEventListener('click', onSelect);
+    listDeleteButton.addEventListener('click', onDelete);
     
     listEditButton.onclick = (e) => {
 
@@ -68,14 +67,18 @@ const List = (id, name, selected, onDelete, onChange, onSelect) => {
 
 }
 
-let lists = [];
-let selectedList = [];
 
+
+let lists = [];
+
+let selectedList = [];
 
 const addList = (id, name = 'New list') => {
     lists.push({id, name});
     listsRender();
-}
+    selectList();
+  }
+
 
 const deleteList = (id) => {
     lists = lists.filter(list => list.id !== id);
@@ -93,13 +96,13 @@ const changeList = (id, name = 'New list') => {
 
 const selectList = (id) => {
     lists.forEach(list => {
-        if (list.id === id) {
-
-            selectedList = list;
-        }
-    })
+      if (list.id === id) {
+        selectedList = list;
+      }
+    });
+    tasksRender();
     listsRender();
-}
+  }
 
 const listsRender = () => {
     sidebarList.innerHTML = '';
