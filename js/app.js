@@ -60,6 +60,14 @@ const toggleTask = (id) => {
     tasksRender();
 }
 
+// const returnTasks = (id) => {
+//   tasks.forEach(task => {
+//     if (id) {
+//       task.taskListId = InboxListId;
+//     }
+//   })
+// }
+
 
 const tasksRender = () => {
     list.innerHTML = '';

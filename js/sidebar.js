@@ -85,6 +85,12 @@ const addList = (id, name = 'New list') => {
 const deleteList = (id) => {
     lists = lists.filter(list => list.id !== id);
     listsRender();
+    selectList(InboxListId);
+    tasks.forEach((task) => {
+        if (task.taskListId === id) {
+            task.taskListId = InboxListId;
+        }
+    })
 }
 
 const changeList = (id, name = 'New list') => {
@@ -106,10 +112,10 @@ const selectList = (id) => {
     listsRender();
   }
 
+
 const listsRender = () => {
-    sidebarList.innerHTML = '';
-    lists.forEach(list => {
-        // let isListSelected = list.id === InboxListId;
+        sidebarList.innerHTML = '';
+        lists.forEach(list => {
         let isListSelected = selectedList.id === list.id;
         let isButtonsDisabled = list.id === InboxListId;
         sidebarList.appendChild(List(list.id, list.name, 
@@ -137,4 +143,5 @@ sidebarButton.addEventListener('click', (e) => {
     
 })
 
+selectList(InboxListId);
 listsRender();
