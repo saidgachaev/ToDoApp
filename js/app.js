@@ -42,7 +42,7 @@ const Task = (id, text, checked, onDelete, onCheckboxChange) => {
 let tasks = [];
 
   const addTask = (id, text) => {
-    tasks.push({ id, text, checked: false, taskList: selectedList.id });
+    tasks.push({ id, text, checked: false, taskListId: selectedList.id });
     tasksRender();
   }
 
@@ -60,13 +60,21 @@ const toggleTask = (id) => {
     tasksRender();
 }
 
+// const returnTasks = (id) => {
+//   tasks.forEach(task => {
+//     if (id) {
+//       task.taskListId = INBOX_LIST_ID;
+//     }
+//   })
+// }
+
 
 const tasksRender = () => {
     list.innerHTML = '';
-    const taskFilter = tasks.filter((item) => {
-      return item.taskList === selectedList.id;
+    const filteredTasks = tasks.filter((item) => {
+      return item.taskListId === selectedList.id;
     })
-    taskFilter.forEach((task) => {
+    filteredTasks.forEach((task) => {
         list.appendChild(Task(
             task.id,
             task.text,
