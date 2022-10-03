@@ -19,11 +19,14 @@ const List = (id, name, selected, onDelete, onChange, onSelect, disabled) => {
 
     if (selected) {
         listElement.classList.add('sidebar-list-element-active');
+        header.innerHTML = name;
     }
 
+
     if (!disabled) {
+        listButtonContainer.innerHTML = numbers;
         listButtonContainer.appendChild(listEditButton);
-    listButtonContainer.appendChild(listDeleteButton);
+        listButtonContainer.appendChild(listDeleteButton);
     }
 
     sidebarList.appendChild(listElement);
@@ -71,7 +74,7 @@ const List = (id, name, selected, onDelete, onChange, onSelect, disabled) => {
 
 }
 
-let lists = [{id: INBOX_LIST_ID, name: 'inbox'}];
+let lists = [{id: INBOX_LIST_ID, name: 'Inbox'}];
 
 let selectedList = [];
 
@@ -111,7 +114,6 @@ const selectList = (id) => {
     tasksRender();
     listsRender();
   }
-
 
 const listsRender = () => {
         sidebarList.innerHTML = '';

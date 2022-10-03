@@ -1,8 +1,8 @@
 
-const list = document.querySelector(".items-list");
-const button = document.querySelector(".adding-button");
-const input = document.querySelector(".task-input");
-
+const list = document.querySelector('.items-list');
+const button = document.querySelector('.adding-button');
+const input = document.querySelector('.task-input');
+const header = document.querySelector('.todolist-header');
 
 const Task = (id, text, checked, onDelete, onCheckboxChange) => {
     const task = document.createElement('div');
@@ -59,14 +59,6 @@ const toggleTask = (id) => {
     })
     tasksRender();
 }
-
-// const returnTasks = (id) => {
-//   tasks.forEach(task => {
-//     if (id) {
-//       task.taskListId = INBOX_LIST_ID;
-//     }
-//   })
-// }
 
 
 const tasksRender = () => {
