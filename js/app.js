@@ -38,17 +38,18 @@ const Task = (id, text, checked, onDelete, onCheckboxChange) => {
     return task;
 }
 
-
 let tasks = [];
 
   const addTask = (id, text) => {
-    tasks.push({ id, text, checked: false, taskListId: selectedList.id });
+    tasks.push({ id, text, checked: false, taskListId: selectedList.id});
     tasksRender();
+    listsRender();
   }
 
 const deleteTask = (id) => {
     tasks = tasks.filter(task => task.id !== id);
     tasksRender();
+    listsRender();
 }
 
 const toggleTask = (id) => {
@@ -59,7 +60,6 @@ const toggleTask = (id) => {
     })
     tasksRender();
 }
-
 
 const tasksRender = () => {
     list.innerHTML = '';
@@ -72,7 +72,8 @@ const tasksRender = () => {
             task.text,
             task.checked,
             () => deleteTask(task.id),
-            () => toggleTask(task.id)))
+            () => toggleTask(task.id)
+            ))
     })
   };
 
