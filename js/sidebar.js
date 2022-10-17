@@ -3,13 +3,13 @@ const sidebarList = document.querySelector('.sidebar-list');
 const sidebarButton = document.querySelector('.sidebar-button');
 const INBOX_LIST_ID = 1;
 
-
-const List = (id, name, selected, onDelete, onChange, onSelect, disabled) => {
+const List = (id, name, selected, onDelete, onChange, onSelect, disabled, tasksCount) => {
     const listElement = document.createElement('div');
     const listElementText = document.createElement('div');
     const listButtonContainer = document.createElement('div');
     const listEditButton = document.createElement('button');
     const listDeleteButton = document.createElement('button');
+    const tasksCountSpan = document.createElement('span');
 
     listElement.classList.add('sidebar-list-element');
     listElementText.classList.add('sidebar-list-element-text');
@@ -17,13 +17,20 @@ const List = (id, name, selected, onDelete, onChange, onSelect, disabled) => {
     listEditButton.classList.add('edit-list-button');
     listDeleteButton.classList.add('delete-list-button');
 
+    listButtonContainer.appendChild(tasksCountSpan);
+
+    if (tasksCount) {
+        tasksCountSpan.innerHTML = tasksCount;
+    }
+
     if (selected) {
         listElement.classList.add('sidebar-list-element-active');
+        header.innerHTML = name;
     }
 
     if (!disabled) {
         listButtonContainer.appendChild(listEditButton);
-    listButtonContainer.appendChild(listDeleteButton);
+        listButtonContainer.appendChild(listDeleteButton);
     }
 
     sidebarList.appendChild(listElement);
@@ -71,7 +78,7 @@ const List = (id, name, selected, onDelete, onChange, onSelect, disabled) => {
 
 }
 
-let lists = [{id: INBOX_LIST_ID, name: 'inbox'}];
+let lists = [{id: INBOX_LIST_ID, name: 'Inbox'}];
 
 let selectedList = [];
 
@@ -112,13 +119,15 @@ const selectList = (id) => {
     listsRender();
   }
 
-
 const listsRender = () => {
         sidebarList.innerHTML = '';
         lists.forEach(list => {
         let isListSelected = selectedList.id === list.id;
         let isButtonsDisabled = list.id === INBOX_LIST_ID;
-        sidebarList.appendChild(List(list.id, list.name, 
+        
+        const tasksCount = tasks.filter(task => task.taskListId === list.id).length;
+
+        sidebarList.appendChild(List(list.id, list.name,
             isListSelected,
 
             () => deleteList(list.id), 
@@ -127,12 +136,15 @@ const listsRender = () => {
 
             () => selectList(list.id),
 
-            isButtonsDisabled
+            isButtonsDisabled,
+
+            tasksCount
 
             ));
     }
         
         );
+        
 };
 
 sidebarButton.addEventListener('click', (e) => {
