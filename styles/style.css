@@ -4,21 +4,35 @@
     box-sizing: border-box;
     } 
 
+    html {
+        height: 100%;
+    }
+    
+    body {
+        height: 100%;
+    }
+    
+    main {
+        display: flex;
+        min-height: 100%;
+    }
+    
+
 .todolist-header{
     font-family: 'Roboto', sans-serif;
     color: lightgray;
-    margin-left: 200px;
-    margin-top: 100px;
-    margin-bottom: 30px;
     font-weight: 10;
     font-size: 60px;
     color: 	#454545;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .task-input{ 
-    
     height: 35px;
-    width: 60%;
+    width: 100%;
     border: 1px solid lightgray;
     padding-left: 10px;
     border-radius: 5px;
@@ -26,11 +40,8 @@
 }
 
 
-input[type=checkbox] {
-    height: fit-content;
-    }
-
 .adding-button{
+    cursor: pointer;
     color: white;
     background-color: rgb(52, 146, 205);
     height: 40px;
@@ -41,19 +52,23 @@ input[type=checkbox] {
 }
 
 .task{
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-left: 200px;
+    align-items: center;
     height: 60px;
     border: 1px solid;
-    padding-top: 25px;
-    max-width: 1000px;
     border-color: lightgray;
-    padding-left: 20px;
-    padding-right: 50px;
+    padding-left: 10px;
+    padding-right: 20px;
     line-height: 1rem;
 }   
 
+.items-list {
+    width: 100%;
+    overflow: auto;
+    height: 65vh;
+}
 
 
 .items-list div:not(:first-child){
@@ -72,18 +87,19 @@ input[type=checkbox] {
 
 
 .delete-button{
+    cursor: pointer;
     height: 20px;
-    width: 20px;
-    background-image: url(images/delete.svg);
+    min-width: 20px;
+    background-image: url(/images/delete.svg);
     background-size: cover;
     border: none;
     background-color: white;
 }
 
 .container {
-    width: 100%;
-    max-width: 1500px;
+    width: 80%;
     margin: 0 auto;
+    padding: 100px 200px 30px;
 }
 
 .checkbox-style {
@@ -96,8 +112,8 @@ input[type=checkbox] {
 
 .element-container {
     display: flex;
+    width: 90%;
 }
-
 
 .wrapper {
     display: flex;
@@ -105,4 +121,10 @@ input[type=checkbox] {
     align-items: center;
     margin: 0 auto;
     margin-bottom: 30px;
+}
+
+.task-text {
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis;
 }

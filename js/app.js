@@ -1,12 +1,14 @@
-const list = document.querySelector(".items-list");
-const button = document.querySelector(".adding-button");
-const input = document.querySelector(".task-input");
+
+const list = document.querySelector('.items-list');
+const button = document.querySelector('.adding-button');
+const input = document.querySelector('.task-input');
+const header = document.querySelector('.todolist-header');
 
 const Task = (id, text, checked, onDelete, onCheckboxChange) => {
-    const task = document.createElement('div')
+    const task = document.createElement('div');
     const textContainer = document.createElement('div');
     const elementContainer = document.createElement('div');
-    const deleteButton = document.createElement('button')
+    const deleteButton = document.createElement('button');
     const checkbox = document.createElement('input');
 
     checkbox.setAttribute('type', 'checkbox');
@@ -15,6 +17,8 @@ const Task = (id, text, checked, onDelete, onCheckboxChange) => {
     checkbox.checked = checked;
 
     textContainer.innerHTML += text;
+    textContainer.classList.add('task-text');
+
     if (checked) {
         textContainer.classList.add('checkbox-checked');
     }
@@ -36,14 +40,16 @@ const Task = (id, text, checked, onDelete, onCheckboxChange) => {
 
 let tasks = [];
 
-const addTask = (id, text) => {
-    tasks.push({ id, text, checked: false });
-    render();
-}
+  const addTask = (id, text) => {
+    tasks.push({ id, text, checked: false, taskListId: selectedList.id});
+    tasksRender();
+    listsRender();
+  }
 
 const deleteTask = (id) => {
     tasks = tasks.filter(task => task.id !== id);
-    render();
+    tasksRender();
+    listsRender();
 }
 
 const toggleTask = (id) => {
@@ -52,15 +58,24 @@ const toggleTask = (id) => {
             task.checked = !task.checked;
         }
     })
-    render();
+    tasksRender();
 }
 
-
-const render = () => {
+const tasksRender = () => {
     list.innerHTML = '';
-    tasks.forEach(task => list.appendChild(Task(task.id, task.text, task.checked, () => deleteTask(task.id), () => toggleTask(task.id))));
-};
-
+    const filteredTasks = tasks.filter((item) => {
+      return item.taskListId === selectedList.id;
+    })
+    filteredTasks.forEach((task) => {
+        list.appendChild(Task(
+            task.id,
+            task.text,
+            task.checked,
+            () => deleteTask(task.id),
+            () => toggleTask(task.id)
+            ))
+    })
+  };
 
 button.addEventListener('click', (e) => {
     e.preventDefault();
@@ -76,4 +91,4 @@ input.addEventListener('keydown', function(e) {
       }
     });
 
-render();
+tasksRender();
