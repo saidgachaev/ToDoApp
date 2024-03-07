@@ -42,9 +42,6 @@
     background-color: rgb(226, 213, 222);
 }
 
-.sidebar-list-element-active {
-    
-}
 
 .sidebar-button {
     cursor: pointer;
@@ -75,7 +72,7 @@
     width: 20px;
     background-size: cover;
     border: none;
-    background-image: url(./images/delete.svg);
+    background-image: url(/images/delete.svg);
     background-color: inherit;
     cursor: pointer;
 }
@@ -85,7 +82,7 @@
     width: 20px;
     background-size: cover;
     border: none;
-    background-image: url(./images/pen.svg);
+    background-image: url(/images/pen.svg);
     background-color: inherit;
     cursor: pointer;
 }
