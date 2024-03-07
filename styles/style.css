@@ -90,7 +90,7 @@
     cursor: pointer;
     height: 20px;
     min-width: 20px;
-    background-image: url(/images/delete.svg);
+    background-image: url(../images/delete.svg);
     background-size: cover;
     border: none;
     background-color: white;
